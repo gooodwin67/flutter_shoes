@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_re/constants/constants.dart';
 
 class StartScreenWidget extends StatelessWidget {
   const StartScreenWidget({super.key});
@@ -51,8 +52,8 @@ class StartScreenWidget extends StatelessWidget {
                     Navigator.pushNamed(context, '/catalog');
                   },
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          Color.fromARGB(255, 255, 120, 42)),
+                      backgroundColor:
+                          MaterialStateProperty.all(Constants.mainColor),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),

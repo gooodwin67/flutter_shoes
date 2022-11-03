@@ -34,6 +34,10 @@ class Firm {
 class Products extends ChangeNotifier {
   int activeProduct = 0;
   String deliveryText = 'In this block we have a delivery and return text';
+  int quantity = 1;
+  int sizeFormat = 0;
+  int activeSize = 0;
+  int activeColor = 0;
   final _productList = [
     Product(
         name: 'Nike Air Vapormax 2020',
@@ -42,12 +46,14 @@ class Products extends ChangeNotifier {
         price: 290,
         category: "Men's shoes",
         score: 4.7,
-        sizes_us: [5, 5.5, 6, 6.5, 7, 7.5, 8],
-        sizes_uk: [5, 5.5, 6, 6.5, 7, 7.5, 8],
-        sizes_eu: [5, 5.5, 6, 6.5, 7, 7.5, 8],
+        sizes: [
+          [5, 5.5, 6, 6.5, 7, 7.5, 8],
+          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
+          [38, 39, 40, 41, 42, 43, 44]
+        ],
         description:
             'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: ['black', 'green', 'purple']),
+        colors: [Colors.black, Colors.green, Colors.purple]),
     Product(
         name: 'Nike Air Vapormax 2020-2',
         photo: 'assets/images/nike2.png',
@@ -55,12 +61,14 @@ class Products extends ChangeNotifier {
         price: 290,
         category: "Men's shoes",
         score: 4.7,
-        sizes_us: [5, 5.5, 6, 6.5, 7, 7.5, 8],
-        sizes_uk: [5, 5.5, 6, 6.5, 7, 7.5, 8],
-        sizes_eu: [5, 5.5, 6, 6.5, 7, 7.5, 8],
+        sizes: [
+          [5, 5.5, 6, 6.5, 7, 7.5, 8],
+          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
+          [38, 39, 40, 41, 42, 43, 44]
+        ],
         description:
             'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: ['black', 'green', 'purple']),
+        colors: [Colors.black, Colors.green, Colors.purple]),
     Product(
         name: 'Nike Air Vapormax 2020-3',
         photo: 'assets/images/nike3.png',
@@ -68,12 +76,14 @@ class Products extends ChangeNotifier {
         price: 290,
         category: "Men's shoes",
         score: 4.7,
-        sizes_us: [5, 5.5, 6, 6.5, 7, 7.5, 8],
-        sizes_uk: [5, 5.5, 6, 6.5, 7, 7.5, 8],
-        sizes_eu: [5, 5.5, 6, 6.5, 7, 7.5, 8],
+        sizes: [
+          [5, 5.5, 6, 6.5, 7, 7.5, 8],
+          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
+          [38, 39, 40, 41, 42, 43, 44]
+        ],
         description:
             'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: ['black', 'green', 'purple'])
+        colors: [Colors.black, Colors.green, Colors.purple]),
   ];
   get productList => _productList;
 
@@ -81,6 +91,31 @@ class Products extends ChangeNotifier {
     //_productList.forEach((element) => element.active = false);
     //_productList[index].active = true;
     activeProduct = index;
+  }
+
+  void plusQuantity() {
+    quantity++;
+    notifyListeners();
+  }
+
+  void minusQuantity() {
+    quantity > 0 ? quantity-- : quantity = 0;
+    notifyListeners();
+  }
+
+  void changeSizeFormat(index) {
+    sizeFormat = index;
+    notifyListeners();
+  }
+
+  void setActiveSize(index) {
+    activeSize = index;
+    notifyListeners();
+  }
+
+  void setActiveColor(index) {
+    activeColor = index;
+    notifyListeners();
   }
 }
 
@@ -91,11 +126,9 @@ class Product {
   int price;
   String category;
   double score;
-  List sizes_us;
-  List sizes_uk;
-  List sizes_eu;
+  List sizes;
   String description;
-  List colors;
+  List<Color> colors;
 
   Product(
       {Key? key,
@@ -105,9 +138,7 @@ class Product {
       required this.price,
       required this.category,
       required this.score,
-      required this.sizes_us,
-      required this.sizes_uk,
-      required this.sizes_eu,
+      required this.sizes,
       required this.description,
       required this.colors});
 }

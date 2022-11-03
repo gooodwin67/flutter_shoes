@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_re/constants/constants.dart';
 import 'package:flutter_re/providers/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -33,108 +34,112 @@ class CatalogScreenWidget extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset('assets/icons/icon-menu.jpg'),
-                  Image.asset('assets/icons/icon-cart.jpg')
-                ],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Column(
+            children: [
+              Padding(
+                padding: Constants.mainPadding,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset('assets/icons/icon-menu.jpg'),
+                    Image.asset('assets/icons/icon-cart.jpg')
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              child: Material(
-                elevation: 5,
-                shadowColor: Color.fromARGB(75, 80, 80, 80),
-                borderRadius: BorderRadius.circular(30),
-                child: TextField(
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 240, 240, 250),
-                        )),
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.all(7.0),
-                      child: Image.asset('assets/icons/icon-search.jpg',
-                          width: 10),
+              Padding(
+                padding: Constants.mainPadding,
+                child: Material(
+                  elevation: 5,
+                  shadowColor: Color.fromARGB(75, 80, 80, 80),
+                  borderRadius: BorderRadius.circular(30),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 240, 240, 250),
+                          )),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.all(7.0),
+                        child: Image.asset('assets/icons/icon-search.jpg',
+                            width: 10),
+                      ),
+                      labelText: 'Search',
                     ),
-                    labelText: 'Search',
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 0, top: 15, bottom: 5, right: 0),
-              child: Container(
-                height: 50,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: firmList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: InkWell(
-                        onTap: () {
-                          context.read<Firms>().setActive(index);
-                        },
-                        child: Container(
-                          foregroundDecoration: BoxDecoration(
-                            color: firmList[index].active == true
-                                ? Color.fromARGB(0, 233, 233, 233)
-                                : Color.fromARGB(233, 233, 233, 233),
-                            borderRadius: BorderRadius.circular(7),
-                          ),
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 233, 233, 233),
-                              borderRadius: BorderRadius.circular(7)),
-                          width: 80,
-                          height: 50,
-                          child: Image.asset(
-                            firmList[index].photo,
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 0, top: 15, bottom: 15, right: 0),
+                child: Container(
+                  height: 50,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: firmList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: InkWell(
+                          onTap: () {
+                            context.read<Firms>().setActive(index);
+                          },
+                          child: Container(
+                            foregroundDecoration: BoxDecoration(
+                              color: firmList[index].active == true
+                                  ? Color.fromARGB(0, 233, 233, 233)
+                                  : Color.fromARGB(233, 233, 233, 233),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            padding: EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 233, 233, 233),
+                                borderRadius: BorderRadius.circular(7)),
+                            width: 80,
+                            height: 50,
+                            child: Image.asset(
+                              firmList[index].photo,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Popular',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(
-                        color: Color.fromARGB(255, 180, 180, 180),
-                        width: 1,
+              Padding(
+                padding: Constants.mainPadding,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Popular',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(7),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(
+                          color: Color.fromARGB(255, 180, 180, 180),
+                          width: 1,
+                        ),
+                      ),
+                      child: Icon(
+                        Icons.format_align_left_rounded,
+                        size: 17,
+                        color: Color.fromARGB(255, 99, 99, 99),
                       ),
                     ),
-                    child: Icon(
-                      Icons.format_align_left_rounded,
-                      size: 17,
-                      color: Color.fromARGB(255, 99, 99, 99),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            ListProds(),
-          ],
+              ListProds(),
+            ],
+          ),
         ),
       ),
     );
@@ -179,6 +184,7 @@ class ListProductBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var aaa = Constants.mainColor;
     return Column(
       children: [
         InkWell(
@@ -217,9 +223,9 @@ class ListProductBlock extends StatelessWidget {
                       onTap: () {
                         print('favorite');
                       },
-                      child: const Icon(
+                      child: Icon(
                         Icons.favorite,
-                        color: Color.fromARGB(255, 255, 120, 42),
+                        color: Constants.mainColor,
                         size: 22,
                       ),
                     ),
