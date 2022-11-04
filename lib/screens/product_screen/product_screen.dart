@@ -18,6 +18,7 @@ class _ProductScreenWidgetState extends State<ProductScreenWidget>
   late AnimationController controller2;
   @override
   void initState() {
+    context.read<Products>().resetQuantity();
     controller = AnimationController(
       vsync: this,
       duration: const Duration(
@@ -36,9 +37,13 @@ class _ProductScreenWidgetState extends State<ProductScreenWidget>
   @override
   Widget build(BuildContext context) {
     var deliveryText = context.read<Products>().deliveryText;
-    var product = context
+    List newProductList = context
         .watch<Products>()
-        .productList[context.watch<Products>().activeProduct];
+        .productList
+        .where(
+            (element) => element.catId == context.watch<Firms>().activeFirmId)
+        .toList();
+    var product = newProductList[context.watch<Products>().activeProduct];
     var sizeFormat = context.read<Products>().sizeFormat;
     return Scaffold(
       body: SafeArea(
