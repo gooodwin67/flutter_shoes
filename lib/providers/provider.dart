@@ -203,7 +203,11 @@ class Products extends ChangeNotifier {
   void setActiveProduct(index) {
     //_productList.forEach((element) => element.active = false);
     //_productList[index].active = true;
-    activeProduct = index;
+    int i = 0;
+    _productList.forEach((element) {
+      element.id == index ? activeProduct = i : null;
+      i++;
+    });
   }
 
   void plusQuantity() {

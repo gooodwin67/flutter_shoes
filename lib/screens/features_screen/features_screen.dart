@@ -85,7 +85,7 @@ class ListProductBlock extends StatelessWidget {
             borderRadius: BorderRadius.circular(25),
           ),
           onTap: () {
-            context.read<Products>().setActiveProduct(ind);
+            context.read<Products>().setActiveProduct(id);
             Navigator.pushNamed(context, '/main/product');
           },
           splashColor: Color.fromARGB(255, 0, 0, 0),

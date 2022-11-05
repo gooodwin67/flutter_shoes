@@ -43,7 +43,10 @@ class _ProductScreenWidgetState extends State<ProductScreenWidget>
         .where(
             (element) => element.catId == context.watch<Firms>().activeFirmId)
         .toList();
-    var product = newProductList[context.watch<Products>().activeProduct];
+    var product = context
+        .watch<Products>()
+        .productList[context.watch<Products>().activeProduct];
+
     var sizeFormat = context.read<Products>().sizeFormat;
     return Scaffold(
       body: SafeArea(
