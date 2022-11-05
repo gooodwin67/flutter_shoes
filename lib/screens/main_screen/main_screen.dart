@@ -105,7 +105,7 @@ class MainScreenWidget extends StatelessWidget {
                             color: Constants.mainColor.withAlpha(200),
                             borderRadius: BorderRadius.circular(50)),
                         child: Text(
-                          context.watch<Products>().allinCart.toString(),
+                          context.watch<Products>().allInCart.toString(),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 11,

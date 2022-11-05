@@ -81,7 +81,7 @@ class Products extends ChangeNotifier {
   int activeSize = 0;
   int activeColor = 0;
   int allFavourited = 0;
-  int allinCart = 0;
+  int allInCart = 0;
   final _productList = [
     Product(
         id: 1,
@@ -251,7 +251,7 @@ class Products extends ChangeNotifier {
     for (var e in _productList) {
       if (e.id == index) {
         e.cart = e.cart + 1 * quantity;
-        allinCart = allinCart + 1 * quantity;
+        allInCart = allInCart + 1 * quantity;
       }
     }
     quantity = 1;
@@ -261,7 +261,7 @@ class Products extends ChangeNotifier {
   void removeFromCart(index) {
     for (var e in _productList) {
       if (e.id == index) {
-        allinCart = allinCart - e.cart;
+        allInCart = allInCart - e.cart;
         e.cart = 0;
       }
     }

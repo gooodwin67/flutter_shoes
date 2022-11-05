@@ -11,25 +11,29 @@ class CartScreenWidget extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(top: 10),
-        child: Column(
-          children: [
-            Padding(
-              padding: Constants.mainPadding,
-              child: Text(
-                'Cart',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: Constants.mainPadding,
+                child: Text(
+                  'Cart',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            ListProdsInFeatured(),
-          ],
+              context.read<Products>().allInCart == 0
+                  ? Text('Cart is empty')
+                  : ListProdsInCart(),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-class ListProdsInFeatured extends StatelessWidget {
-  const ListProdsInFeatured({
+class ListProdsInCart extends StatelessWidget {
+  const ListProdsInCart({
     Key? key,
   }) : super(key: key);
 
