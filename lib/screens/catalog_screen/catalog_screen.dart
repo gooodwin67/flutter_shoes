@@ -144,8 +144,11 @@ class ListProds extends StatelessWidget {
           itemBuilder: (BuildContext context, index) {
             return ListProductBlock(
               ind: index,
+              id: newProductList[index].id,
               name: newProductList[index].name,
               photo: newProductList[index].photo,
+              price: newProductList[index].price,
+              feautered: newProductList[index].favourited,
             );
           },
         ),
@@ -156,12 +159,18 @@ class ListProds extends StatelessWidget {
 
 class ListProductBlock extends StatelessWidget {
   int ind;
+  int id;
   String name;
   String photo;
+  double price;
+  int feautered;
   ListProductBlock({
     required this.ind,
+    required this.id,
     required this.name,
     required this.photo,
+    required this.price,
+    required this.feautered,
     Key? key,
   }) : super(key: key);
 
@@ -196,17 +205,17 @@ class ListProductBlock extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('\$250.00',
-                        style: TextStyle(
+                    Text('\$$price',
+                        style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 43, 43, 43))),
                     InkWell(
                       onTap: () {
-                        context.read<Products>().setFeautered(ind);
+                        context.read<Products>().setFavourited(id);
                       },
                       child: Icon(
-                        Icons.favorite_border,
+                        feautered > 0 ? Icons.favorite : Icons.favorite_border,
                         color: Constants.mainColor,
                         size: 22,
                       ),
@@ -221,7 +230,7 @@ class ListProductBlock extends StatelessWidget {
                             fontSize: 20, fontWeight: FontWeight.bold)),
                     InkWell(
                       onTap: () {
-                        print('cart');
+                        context.read<Products>().addToCart(id);
                       },
                       child: Container(
                         padding: EdgeInsets.all(7),

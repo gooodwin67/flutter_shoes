@@ -80,6 +80,8 @@ class Products extends ChangeNotifier {
   int sizeFormat = 0;
   int activeSize = 0;
   int activeColor = 0;
+  int allFavourited = 0;
+  int allinCart = 0;
   final _productList = [
     Product(
         id: 1,
@@ -87,7 +89,9 @@ class Products extends ChangeNotifier {
         name: 'Nike Air Vapormax 2020',
         photo: 'assets/images/nike1.png',
         active: false,
-        price: 290,
+        cart: 0,
+        favourited: 0,
+        price: 250,
         category: "Men's shoes",
         score: 4.7,
         sizes: [
@@ -104,6 +108,8 @@ class Products extends ChangeNotifier {
         name: 'Nike Air Vapormax 2020-2',
         photo: 'assets/images/nike2.png',
         active: false,
+        cart: 0,
+        favourited: 0,
         price: 290,
         category: "Men's shoes",
         score: 4.7,
@@ -121,6 +127,8 @@ class Products extends ChangeNotifier {
         name: 'Nike Air Vapormax 2020-3',
         photo: 'assets/images/nike3.png',
         active: false,
+        cart: 0,
+        favourited: 0,
         price: 290,
         category: "Men's shoes",
         score: 4.7,
@@ -138,6 +146,8 @@ class Products extends ChangeNotifier {
         name: 'Adidas Shark',
         photo: 'assets/images/adi1.png',
         active: false,
+        cart: 0,
+        favourited: 0,
         price: 290,
         category: "Men's shoes",
         score: 4.7,
@@ -155,6 +165,8 @@ class Products extends ChangeNotifier {
         name: 'Adidas Shark 2',
         photo: 'assets/images/adi2.png',
         active: false,
+        cart: 0,
+        favourited: 0,
         price: 290,
         category: "Men's shoes",
         score: 4.7,
@@ -172,6 +184,8 @@ class Products extends ChangeNotifier {
         name: 'Adidas Shark 3',
         photo: 'assets/images/adi3.png',
         active: false,
+        cart: 0,
+        favourited: 0,
         price: 290,
         category: "Men's shoes",
         score: 4.7,
@@ -221,7 +235,36 @@ class Products extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setFeautered(index) {
+  void setFavourited(index) {
+    //print(index);
+    for (var e in _productList) {
+      if (e.id == index) {
+        e.favourited == 1
+            ? {e.favourited = 0, allFavourited--}
+            : {e.favourited = 1, allFavourited++};
+      }
+    }
+    notifyListeners();
+  }
+
+  void addToCart(index) {
+    for (var e in _productList) {
+      if (e.id == index) {
+        e.cart = e.cart + 1 * quantity;
+        allinCart = allinCart + 1 * quantity;
+      }
+    }
+    quantity = 1;
+    notifyListeners();
+  }
+
+  void removeFromCart(index) {
+    for (var e in _productList) {
+      if (e.id == index) {
+        allinCart = allinCart - e.cart;
+        e.cart = 0;
+      }
+    }
     notifyListeners();
   }
 }
@@ -232,7 +275,9 @@ class Product {
   String name;
   String photo;
   bool active;
-  int price;
+  int cart;
+  int favourited;
+  double price;
   String category;
   double score;
   List sizes;
@@ -246,6 +291,8 @@ class Product {
       required this.name,
       required this.photo,
       required this.active,
+      required this.cart,
+      required this.favourited,
       required this.price,
       required this.category,
       required this.score,

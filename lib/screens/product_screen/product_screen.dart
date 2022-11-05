@@ -79,7 +79,9 @@ class _ProductScreenWidgetState extends State<ProductScreenWidget>
                     customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context.read<Products>().setFavourited(product.id);
+                    },
                     child: Container(
                       width: 35,
                       height: 35,
@@ -92,7 +94,9 @@ class _ProductScreenWidgetState extends State<ProductScreenWidget>
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: Icon(
-                        Icons.favorite,
+                        product.favourited == 0
+                            ? Icons.favorite_border
+                            : Icons.favorite,
                         size: 20,
                         color: Constants.mainColor,
                       ),
@@ -141,7 +145,7 @@ class _ProductScreenWidgetState extends State<ProductScreenWidget>
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                   Text(
-                    '\$${product.price}.00',
+                    '\$${product.price}',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   )
                 ],
@@ -451,7 +455,7 @@ class _ProductScreenWidgetState extends State<ProductScreenWidget>
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/catalog');
+                    context.read<Products>().addToCart(product.id);
                   },
                   style: ButtonStyle(
                       backgroundColor:

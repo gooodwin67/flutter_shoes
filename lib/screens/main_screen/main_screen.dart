@@ -25,7 +25,7 @@ class MainScreenWidget extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         //shape: CircularNotchedRectangle(),
         child: Container(
-          height: 60.0,
+          height: 55.0,
           color: Color.fromARGB(255, 255, 255, 255),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -37,7 +37,7 @@ class MainScreenWidget extends StatelessWidget {
                 },
                 child: Icon(
                   Icons.list_alt,
-                  size: 30,
+                  size: 25,
                   color: context.watch<BottomMenu>().activeMenuItem == 1
                       ? Constants.mainColor
                       : Colors.black,
@@ -48,12 +48,36 @@ class MainScreenWidget extends StatelessWidget {
                 onTap: () {
                   context.read<BottomMenu>().setActiveMenuItem(2);
                 },
-                child: Icon(
-                  Icons.favorite_border,
-                  size: 30,
-                  color: context.watch<BottomMenu>().activeMenuItem == 2
-                      ? Constants.mainColor
-                      : Colors.black,
+                child: Stack(
+                  children: [
+                    Icon(
+                      Icons.favorite_border,
+                      size: 25,
+                      color: context.watch<BottomMenu>().activeMenuItem == 2
+                          ? Constants.mainColor
+                          : Colors.black,
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        alignment: Alignment.topCenter,
+                        width: 13,
+                        height: 13,
+                        decoration: BoxDecoration(
+                            color: Constants.mainColor.withAlpha(200),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: Text(
+                          context.watch<Products>().allFavourited.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
               SizedBox(),
@@ -61,12 +85,36 @@ class MainScreenWidget extends StatelessWidget {
                 onTap: () {
                   context.read<BottomMenu>().setActiveMenuItem(3);
                 },
-                child: Icon(
-                  Icons.shopping_cart_outlined,
-                  size: 30,
-                  color: context.watch<BottomMenu>().activeMenuItem == 3
-                      ? Constants.mainColor
-                      : Colors.black,
+                child: Stack(
+                  children: [
+                    Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 25,
+                      color: context.watch<BottomMenu>().activeMenuItem == 3
+                          ? Constants.mainColor
+                          : Colors.black,
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        alignment: Alignment.topCenter,
+                        width: 13,
+                        height: 13,
+                        decoration: BoxDecoration(
+                            color: Constants.mainColor.withAlpha(200),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: Text(
+                          context.watch<Products>().allinCart.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
               SizedBox(),
@@ -76,7 +124,7 @@ class MainScreenWidget extends StatelessWidget {
                 },
                 child: Icon(
                   Icons.contact_support_outlined,
-                  size: 30,
+                  size: 25,
                   color: context.watch<BottomMenu>().activeMenuItem == 4
                       ? Constants.mainColor
                       : Colors.black,
