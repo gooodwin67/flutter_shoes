@@ -11,47 +11,22 @@ class CatalogScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10),
-        child: Column(
-          children: [
-            Padding(
-              padding: Constants.mainPadding,
-              // child: Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Image.asset('assets/icons/icon-menu.jpg'),
-              //     Image.asset('assets/icons/icon-cart.jpg')
-              //   ],
-              // ),
-            ),
-            // Padding(
-            //   padding: Constants.mainPadding,
-            //   child: Material(
-            //     elevation: 5,
-            //     shadowColor: Color.fromARGB(75, 80, 80, 80),
-            //     borderRadius: BorderRadius.circular(30),
-            //     child: TextField(
-            //       decoration: InputDecoration(
-            //         enabledBorder: OutlineInputBorder(
-            //             borderRadius: BorderRadius.circular(30),
-            //             borderSide: BorderSide(
-            //               color: Color.fromARGB(255, 240, 240, 250),
-            //             )),
-            //         prefixIcon: Padding(
-            //           padding: const EdgeInsets.all(7.0),
-            //           child: Image.asset('assets/icons/icon-search.jpg',
-            //               width: 10),
-            //         ),
-            //         labelText: 'Search',
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            Padding(
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            elevation: 0,
+            floating: true,
+            pinned: false,
+            snap: false,
+            titleSpacing: 0,
+            backgroundColor: Color.fromARGB(255, 8, 8, 8),
+            automaticallyImplyLeading: false,
+            expandedHeight: 59,
+            title: Padding(
               padding:
-                  const EdgeInsets.only(left: 0, top: 15, bottom: 15, right: 0),
+                  const EdgeInsets.only(left: 0, top: 10, bottom: 10, right: 0),
               child: Container(
+                padding: EdgeInsets.symmetric(vertical: 5),
                 height: 50,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -72,7 +47,7 @@ class CatalogScreenWidget extends StatelessWidget {
                                     : Color.fromARGB(233, 233, 233, 233),
                             borderRadius: BorderRadius.circular(7),
                           ),
-                          padding: EdgeInsets.all(15),
+                          padding: EdgeInsets.all(11),
                           decoration: BoxDecoration(
                               color: Color.fromARGB(255, 233, 233, 233),
                               borderRadius: BorderRadius.circular(7)),
@@ -88,14 +63,28 @@ class CatalogScreenWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: Constants.mainPadding,
+          ),
+          SliverAppBar(
+            //shadowColor: Colors.white,
+            elevation: 0,
+            floating: false,
+            pinned: true,
+            snap: false,
+            backgroundColor: Colors.white,
+            automaticallyImplyLeading: false,
+            titleSpacing: 0,
+            title: Container(
+              padding:
+                  EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Popular',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                   Container(
                     padding: EdgeInsets.all(7),
@@ -115,9 +104,9 @@ class CatalogScreenWidget extends StatelessWidget {
                 ],
               ),
             ),
-            ListProds(),
-          ],
-        ),
+          ),
+          ListProds(),
+        ],
       ),
     );
   }
@@ -136,24 +125,20 @@ class ListProds extends StatelessWidget {
             (element) => element.catId == context.watch<Firms>().activeFirmId)
         .toList();
     //print(newProductList.length);
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(left: 10, right: 10),
-        child: ListView.builder(
-          itemCount: newProductList.length,
-          itemBuilder: (BuildContext context, index) {
-            return ListProductBlock(
-              ind: index,
-              id: newProductList[index].id,
-              name: newProductList[index].name,
-              photo: newProductList[index].photo,
-              price: newProductList[index].price,
-              feautered: newProductList[index].favourited,
-            );
-          },
-        ),
-      ),
-    );
+    return SliverList(
+        delegate: SliverChildBuilderDelegate(
+      childCount: newProductList.length,
+      (BuildContext context, index) {
+        return ListProductBlock(
+          ind: index,
+          id: newProductList[index].id,
+          name: newProductList[index].name,
+          photo: newProductList[index].photo,
+          price: newProductList[index].price,
+          feautered: newProductList[index].favourited,
+        );
+      },
+    ));
   }
 }
 

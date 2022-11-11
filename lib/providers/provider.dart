@@ -197,6 +197,25 @@ class Products extends ChangeNotifier {
         description:
             'In this block we have any description of this shoes. In this block we have any description of this shoes.',
         colors: [Colors.black, Colors.green, Colors.purple]),
+    Product(
+        id: 7,
+        catId: 1,
+        name: 'Nike Air Vapormax 2020',
+        photo: 'assets/images/nike1.png',
+        active: false,
+        cart: 0,
+        favourited: 0,
+        price: 250,
+        category: "Men's shoes",
+        score: 4.7,
+        sizes: [
+          [5, 5.5, 6, 6.5, 7, 7.5, 8],
+          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
+          [38, 39, 40, 41, 42, 43, 44]
+        ],
+        description:
+            'In this block we have any description of this shoes. In this block we have any description of this shoes.',
+        colors: [Colors.black, Colors.green, Colors.purple]),
   ];
   get productList => _productList;
 
