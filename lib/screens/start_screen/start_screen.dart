@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_re/api/api.dart';
 import 'package:flutter_re/constants/constants.dart';
 
 class StartScreenWidget extends StatelessWidget {
@@ -6,6 +7,7 @@ class StartScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(getJson());
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
