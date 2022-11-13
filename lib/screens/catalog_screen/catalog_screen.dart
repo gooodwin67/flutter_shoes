@@ -80,7 +80,11 @@ class CatalogScreenWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Popular',
+                    context
+                        .read<Firms>()
+                        .firmList[context.watch<Firms>().activeFirmId - 1]
+                        .name
+                        .toString(),
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -147,7 +151,7 @@ class ListProductBlock extends StatelessWidget {
   int id;
   String name;
   String photo;
-  double price;
+  int price;
   int feautered;
   ListProductBlock({
     required this.ind,

@@ -42,9 +42,9 @@
       ],
       "description": "In this block we have any description of this shoes. In this block we have any description of this shoes.",
       "colors": [
-        "Colors.black",
-        "Colors.green",
-        "Colors.purple"
+        "0xffff0000",
+        "0xff00ff00",
+        "0xff0000ff"
       ]
     },
     {
@@ -89,9 +89,9 @@
       ],
       "description": "In this block we have any description of this shoes. In this block we have any description of this shoes.",
       "colors": [
-        "Colors.black",
-        "Colors.green",
-        "Colors.purple"
+        "0xffffff00",
+        "0xff00ff00",
+        "0xff0000ff"
       ]
     },
     {
@@ -136,9 +136,9 @@
       ],
       "description": "In this block we have any description of this shoes. In this block we have any description of this shoes.",
       "colors": [
-        "Colors.black",
-        "Colors.green",
-        "Colors.purple"
+        "0xffff0000",
+        "0xff00ff00",
+        "0xff0000ff"
       ]
     }
   ]

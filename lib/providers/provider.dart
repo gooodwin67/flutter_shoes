@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_re/api/api.dart';
 
 class BottomMenu with ChangeNotifier {
   int activeMenuItem = 1;
@@ -82,7 +83,7 @@ class Products extends ChangeNotifier {
   int activeColor = 0;
   int allFavourited = 0;
   int allInCart = 0;
-  final _productList = [
+  /*final _productList = [
     Product(
         id: 1,
         catId: 1,
@@ -216,8 +217,20 @@ class Products extends ChangeNotifier {
         description:
             'In this block we have any description of this shoes. In this block we have any description of this shoes.',
         colors: [Colors.black, Colors.green, Colors.purple]),
-  ];
+  ];*/
+  late var _productList;
+
   get productList => _productList;
+
+  getProdList() {
+    getJson().then((value) {
+      if (value != null) {
+        _productList = value;
+      } else {
+        getJsonFromFile().then((value) => _productList = value);
+      }
+    });
+  }
 
   void setActiveProduct(index) {
     //_productList.forEach((element) => element.active = false);
@@ -284,14 +297,14 @@ class Products extends ChangeNotifier {
   void removeFromCart(index) {
     for (var e in _productList) {
       if (e.id == index) {
-        allInCart = allInCart - e.cart;
+        allInCart -= 1;
         e.cart = 0;
       }
     }
     notifyListeners();
   }
 }
-
+/*
 class Product {
   int id;
   int catId;
@@ -323,3 +336,4 @@ class Product {
       required this.description,
       required this.colors});
 }
+*/

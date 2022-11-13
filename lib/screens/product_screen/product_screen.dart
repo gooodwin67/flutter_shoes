@@ -360,7 +360,7 @@ class _ProductScreenWidgetState extends State<ProductScreenWidget>
                             alignment: Alignment.center,
                             margin: EdgeInsets.only(right: 10),
                             decoration: BoxDecoration(
-                              color: product.colors[index],
+                              color: Color(int.parse(product.colors[index])),
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: AnimatedContainer(

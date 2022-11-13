@@ -69,7 +69,7 @@ class ListProductBlock extends StatelessWidget {
   int id;
   String name;
   String photo;
-  double price;
+  int price;
   int cart;
   int favourited;
   ListProductBlock({

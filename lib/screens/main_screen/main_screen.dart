@@ -39,8 +39,8 @@ class MainScreenWidget extends StatelessWidget {
                   Icons.list_alt,
                   size: 25,
                   color: context.watch<BottomMenu>().activeMenuItem == 1
-                      ? Constants.mainColor
-                      : Colors.black,
+                      ? Colors.black
+                      : Color.fromARGB(255, 172, 172, 172),
                 ),
               ),
               SizedBox(),
@@ -54,8 +54,8 @@ class MainScreenWidget extends StatelessWidget {
                       Icons.favorite_border,
                       size: 25,
                       color: context.watch<BottomMenu>().activeMenuItem == 2
-                          ? Constants.mainColor
-                          : Colors.black,
+                          ? Colors.black
+                          : Color.fromARGB(255, 172, 172, 172),
                     ),
                     Positioned(
                       top: 0,
@@ -65,7 +65,7 @@ class MainScreenWidget extends StatelessWidget {
                         width: 13,
                         height: 13,
                         decoration: BoxDecoration(
-                            color: Constants.mainColor.withAlpha(200),
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(50)),
                         child: Text(
                           context.watch<Products>().allFavourited.toString(),
@@ -91,8 +91,8 @@ class MainScreenWidget extends StatelessWidget {
                       Icons.shopping_cart_outlined,
                       size: 25,
                       color: context.watch<BottomMenu>().activeMenuItem == 3
-                          ? Constants.mainColor
-                          : Colors.black,
+                          ? Colors.black
+                          : Color.fromARGB(255, 172, 172, 172),
                     ),
                     Positioned(
                       top: 0,
@@ -102,7 +102,7 @@ class MainScreenWidget extends StatelessWidget {
                         width: 13,
                         height: 13,
                         decoration: BoxDecoration(
-                            color: Constants.mainColor.withAlpha(200),
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(50)),
                         child: Text(
                           context.watch<Products>().allInCart.toString(),
@@ -126,8 +126,8 @@ class MainScreenWidget extends StatelessWidget {
                   Icons.contact_support_outlined,
                   size: 25,
                   color: context.watch<BottomMenu>().activeMenuItem == 4
-                      ? Constants.mainColor
-                      : Colors.black,
+                      ? Colors.black
+                      : Color.fromARGB(255, 172, 172, 172),
                 ),
               ),
               SizedBox(),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_re/api/api.dart';
 import 'package:flutter_re/constants/constants.dart';
+import 'package:flutter_re/providers/provider.dart';
+import 'package:provider/provider.dart';
 
 class StartScreenWidget extends StatelessWidget {
   const StartScreenWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    print(getJson());
+    context.read<Products>().getProdList();
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,

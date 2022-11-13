@@ -64,7 +64,7 @@ class ListProductBlock extends StatelessWidget {
   int id;
   String name;
   String photo;
-  double price;
+  int price;
   int favourited;
   ListProductBlock({
     required this.ind,

@@ -4,15 +4,30 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 Future getJson() async {
-  //String response2 = await rootBundle.loadString('assets/bd/products.json');
+  //String response = await rootBundle.loadString('assets/bd/products.json');
   var response = await http
       .get(Uri.https('my-json-server.typicode.com', '/gooodwin67/json/db'));
+  if (response.statusCode != 200) {
+    return null;
+  }
 
   final responseMap = await jsonDecode(response.body);
+
   final data = ProsuctList.fromJson(responseMap);
   final productList = data.productList.map((e) => Product.fromJson(e)).toList();
-  print(productList[0].name);
-  //return dataa[0];
+  //print(productList[0].colors[2]);
+  return productList;
+}
+
+Future getJsonFromFile() async {
+  String response = await rootBundle.loadString('assets/bd/products.json');
+
+  final responseMap = await jsonDecode(response);
+
+  final data = ProsuctList.fromJson(responseMap);
+  final productList = data.productList.map((e) => Product.fromJson(e)).toList();
+  //print(productList[0].colors[2]);
+  return productList;
 }
 
 class ProsuctList {
