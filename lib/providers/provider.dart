@@ -89,6 +89,13 @@ class Products extends ChangeNotifier {
   get productList => _productList;
 
   getProdList() {
+    /*getJson().then((value) {
+      if (value != null) {
+        _productList = value;
+      } else {
+        getJsonFromFile().then((value) => _productList = value);
+      }
+    });*/ ///////Load from Server
     getJsonFromFile().then((value) => _productList = value);
   }
 
