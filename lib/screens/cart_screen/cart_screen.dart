@@ -11,21 +11,62 @@ class CartScreenWidget extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(top: 10),
-        child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: Constants.mainPadding,
-                child: Text(
-                  'Cart',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        child: Stack(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: Constants.mainPadding,
+                    child: Text(
+                      'Cart',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  context.read<Products>().allInCart == 0
+                      ? Text('Cart is empty')
+                      : ListProdsInCart(),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/main/order');
+                    },
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Constants.mainColor),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        )),
+                    child: Container(
+                      padding: const EdgeInsets.all(15.0),
+                      child: const Text(
+                        'Order Now',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              context.read<Products>().allInCart == 0
-                  ? Text('Cart is empty')
-                  : ListProdsInCart(),
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );

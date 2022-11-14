@@ -52,7 +52,8 @@ class StartScreenWidget extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/main');
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/main', (r) => false);
                   },
                   style: ButtonStyle(
                       backgroundColor:

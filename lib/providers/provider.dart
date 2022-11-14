@@ -83,153 +83,13 @@ class Products extends ChangeNotifier {
   int activeColor = 0;
   int allFavourited = 0;
   int allInCart = 0;
-  /*final _productList = [
-    Product(
-        id: 1,
-        catId: 1,
-        name: 'Nike Air Vapormax 2020',
-        photo: 'assets/images/nike1.png',
-        active: false,
-        cart: 0,
-        favourited: 0,
-        price: 250,
-        category: "Men's shoes",
-        score: 4.7,
-        sizes: [
-          [5, 5.5, 6, 6.5, 7, 7.5, 8],
-          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
-          [38, 39, 40, 41, 42, 43, 44]
-        ],
-        description:
-            'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: [Colors.black, Colors.green, Colors.purple]),
-    Product(
-        id: 2,
-        catId: 1,
-        name: 'Nike Air Vapormax 2020-2',
-        photo: 'assets/images/nike2.png',
-        active: false,
-        cart: 0,
-        favourited: 0,
-        price: 290,
-        category: "Men's shoes",
-        score: 4.7,
-        sizes: [
-          [5, 5.5, 6, 6.5, 7, 7.5, 8],
-          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
-          [38, 39, 40, 41, 42, 43, 44]
-        ],
-        description:
-            'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: [Colors.black, Colors.green, Colors.purple]),
-    Product(
-        id: 3,
-        catId: 1,
-        name: 'Nike Air Vapormax 2020-3',
-        photo: 'assets/images/nike3.png',
-        active: false,
-        cart: 0,
-        favourited: 0,
-        price: 290,
-        category: "Men's shoes",
-        score: 4.7,
-        sizes: [
-          [5, 5.5, 6, 6.5, 7, 7.5, 8],
-          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
-          [38, 39, 40, 41, 42, 43, 44]
-        ],
-        description:
-            'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: [Colors.black, Colors.green, Colors.purple]),
-    Product(
-        id: 4,
-        catId: 2,
-        name: 'Adidas Shark',
-        photo: 'assets/images/adi1.png',
-        active: false,
-        cart: 0,
-        favourited: 0,
-        price: 290,
-        category: "Men's shoes",
-        score: 4.7,
-        sizes: [
-          [5, 5.5, 6, 6.5, 7, 7.5, 8],
-          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
-          [38, 39, 40, 41, 42, 43, 44]
-        ],
-        description:
-            'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: [Colors.black, Colors.green, Colors.purple]),
-    Product(
-        id: 5,
-        catId: 2,
-        name: 'Adidas Shark 2',
-        photo: 'assets/images/adi2.png',
-        active: false,
-        cart: 0,
-        favourited: 0,
-        price: 290,
-        category: "Men's shoes",
-        score: 4.7,
-        sizes: [
-          [5, 5.5, 6, 6.5, 7, 7.5, 8],
-          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
-          [38, 39, 40, 41, 42, 43, 44]
-        ],
-        description:
-            'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: [Colors.black, Colors.green, Colors.purple]),
-    Product(
-        id: 6,
-        catId: 2,
-        name: 'Adidas Shark 3',
-        photo: 'assets/images/adi3.png',
-        active: false,
-        cart: 0,
-        favourited: 0,
-        price: 290,
-        category: "Men's shoes",
-        score: 4.7,
-        sizes: [
-          [5, 5.5, 6, 6.5, 7, 7.5, 8],
-          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
-          [38, 39, 40, 41, 42, 43, 44]
-        ],
-        description:
-            'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: [Colors.black, Colors.green, Colors.purple]),
-    Product(
-        id: 7,
-        catId: 1,
-        name: 'Nike Air Vapormax 2020',
-        photo: 'assets/images/nike1.png',
-        active: false,
-        cart: 0,
-        favourited: 0,
-        price: 250,
-        category: "Men's shoes",
-        score: 4.7,
-        sizes: [
-          [5, 5.5, 6, 6.5, 7, 7.5, 8],
-          ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'],
-          [38, 39, 40, 41, 42, 43, 44]
-        ],
-        description:
-            'In this block we have any description of this shoes. In this block we have any description of this shoes.',
-        colors: [Colors.black, Colors.green, Colors.purple]),
-  ];*/
+
   late var _productList;
 
   get productList => _productList;
 
   getProdList() {
-    getJson().then((value) {
-      if (value != null) {
-        _productList = value;
-      } else {
-        getJsonFromFile().then((value) => _productList = value);
-      }
-    });
+    getJsonFromFile().then((value) => _productList = value);
   }
 
   void setActiveProduct(index) {
@@ -303,37 +163,11 @@ class Products extends ChangeNotifier {
     }
     notifyListeners();
   }
-}
-/*
-class Product {
-  int id;
-  int catId;
-  String name;
-  String photo;
-  bool active;
-  int cart;
-  int favourited;
-  double price;
-  String category;
-  double score;
-  List sizes;
-  String description;
-  List<Color> colors;
 
-  Product(
-      {Key? key,
-      required this.id,
-      required this.catId,
-      required this.name,
-      required this.photo,
-      required this.active,
-      required this.cart,
-      required this.favourited,
-      required this.price,
-      required this.category,
-      required this.score,
-      required this.sizes,
-      required this.description,
-      required this.colors});
+  void clearCart() {
+    allInCart = 0;
+    for (var e in _productList) {
+      e.cart = 0;
+    }
+  }
 }
-*/

@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 Future getJson() async {
-  //String response = await rootBundle.loadString('assets/bd/products.json');
   var response = await http
       .get(Uri.https('my-json-server.typicode.com', '/gooodwin67/json/db'));
   if (response.statusCode != 200) {
